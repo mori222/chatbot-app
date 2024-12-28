@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* Scss Document */
+/* CSS Document */
+/*------------------------------mixin bg------------------------------*/
+/*------------------------------mixin flex------------------------------*/
+/*------------------------------基本設定------------------------------*/
+html {
+  scroll-behavior: smooth;
+  font-size: 2.5641025641vw;
+}
+@media only screen and (min-width: 700px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+img, source {
+  width: 100%;
+  height: auto;
+}
+
+main {
+  flex: 1;
+}
+
+.wrap {
+  font-family: "Noto Sans JP", sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  overflow: hidden;
+  font-size: 1.6rem;
+}
+
+.pc-only {
+  display: none;
+}
+@media only screen and (min-width: 700px) {
+  .pc-only {
+    display: block;
+  }
+}
+
+.sp-only {
+  display: block;
+}
+@media only screen and (min-width: 700px) {
+  .sp-only {
+    display: none;
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+picture {
+  display: block;
+}/*# sourceMappingURL=style.css.map */
