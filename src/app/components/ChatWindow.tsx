@@ -1,10 +1,10 @@
 "use client"
 
-import '../../../styles/css/chat-window.css';
+import '../../styles/css/chat-window.css';
 import { useState } from 'react';
 import InputField from './InputField';
 import Message from './Message';
-import { questions } from '../../../utils/questions';
+import { questions } from '../../utils/questions';
 
 // 最初にメッセージの型を定義
 interface Message {

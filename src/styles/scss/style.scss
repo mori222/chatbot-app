@@ -24,10 +24,13 @@ main{
 	font-family: 'Noto Sans JP', sans-serif;
 	min-height:100vh;
 	margin:0 auto;
-	max-width: 700px;
+	max-width: 390px;
 	width:100%;
 	overflow:hidden;
 	font-size: 1.6rem;
+	min-height: 100vh;
+	background: #8CABD8;
+	letter-spacing: 0.03em;
 }
 .pc-only{
 	display:none;
@@ -48,4 +51,7 @@ section{
 }
 picture{
 	display:block;
+}
+figure{
+	@include flex;
 }

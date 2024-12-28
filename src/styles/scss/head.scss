@@ -1,0 +1,32 @@
+/* Scss Document */
+
+@charset "UTF-8";
+
+/* CSS Document */
+@import "_variables.scss";
+
+.head_wrap{
+    width: 100%;
+    padding: 1rem 1rem;
+    @include flex;
+    justify-content: space-between;
+    .left_wrap{
+        @include flex;
+        gap: 1rem;
+        figure{
+            width: 0.8rem;
+        }
+        .name{
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+    }
+    .right_wrap{
+        @include flex;
+        gap: 1rem;
+        figure{
+            width: 1.5rem;
+        }
+    }
+}
