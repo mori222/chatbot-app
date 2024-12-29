@@ -27,13 +27,18 @@ main {
   font-family: "Noto Sans JP", sans-serif;
   min-height: 100vh;
   margin: 0 auto;
-  max-width: 390px;
+  max-width: 700px;
   width: 100%;
   overflow: hidden;
   font-size: 1.6rem;
   min-height: 100vh;
   background: #8CABD8;
   letter-spacing: 0.03em;
+}
+@media only screen and (min-width: 700px) {
+  .wrap {
+    max-width: 390px;
+  }
 }
 
 .pc-only {

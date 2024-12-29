@@ -3,10 +3,8 @@
 import '../../styles/css/chat-window.css';
 import { useState } from 'react';
 import InputField from './InputField';
-import Message from './Message';
 import { questions } from '../../utils/questions';
 
-// 最初にメッセージの型を定義
 interface Message {
     text: string;
     sender: 'user' | 'bot';
@@ -15,27 +13,32 @@ interface Message {
 const ChatWindow = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
     const addMessage = (option: string) => {
         setMessages([...messages, { text: option, sender: 'user' }]);
-        
-        // ボットの応答を追加
         const botResponse = questions[currentQuestionIndex].question;
-        setMessages((prevMessages) => [...prevMessages, { text: botResponse, sender: 'bot' }]);
-        
-        // 次の質問に進む
-        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
+        setSelectedOptions(prev => [...prev, option]);
+        setCurrentQuestionIndex(prev => prev + 1);
+    };
+
+    const handleOptionChange = (option: string) => {
+        setSelectedOption(option);
+        addMessage(option);
     };
 
     return (
-        <div>
-            <div className="messages">
-                {messages.map((msg, index) => (
-                    <Message key={index} text={msg.text} sender={msg.sender} />
-                ))}
-            </div>
+        <div className="chat-window">
             {currentQuestionIndex < questions.length && (
-                <InputField onSend={addMessage} question={questions[currentQuestionIndex]} />
+                <InputField 
+                    question={questions[currentQuestionIndex]}
+                    selectedOption={selectedOption}
+                    handleOptionChange={handleOptionChange}
+                    previousQuestions={questions.slice(0, currentQuestionIndex)}
+                    selectedOptions={selectedOptions}
+                />
             )}
         </div>
     );
