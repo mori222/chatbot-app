@@ -3,6 +3,7 @@
 import '../../styles/css/chat-window.css';
 import { useState } from 'react';
 import InputField from './InputField';
+import Result from './Result';
 import { questions } from '../../utils/questions';
 
 interface Message {
@@ -31,7 +32,7 @@ const ChatWindow = () => {
 
     return (
         <div className="chat-window">
-            {currentQuestionIndex < questions.length && (
+            {currentQuestionIndex < questions.length ? (
                 <InputField 
                     question={questions[currentQuestionIndex]}
                     selectedOption={selectedOption}
@@ -39,6 +40,32 @@ const ChatWindow = () => {
                     previousQuestions={questions.slice(0, currentQuestionIndex)}
                     selectedOptions={selectedOptions}
                 />
+            ) : (
+                <div className="input_field">
+                    {/* 過去の質問をすべて表示 */}
+                    {questions.map((prevQuestion, index) => (
+                        <div key={index} className="previous_question">
+                        <div className="bot_wrap">
+                            <figure>
+                                <img src="/images/bot_icon.svg" alt="ボット" />
+                            </figure>
+                            <p className='question'>{prevQuestion.question}</p>
+                        </div>
+                        <div className="option_wrap">
+                            <div className='button'>
+                                    <input
+                                        type="radio"
+                                        id={`${index}-${selectedOptions[index]}`}
+                                        checked={true}
+                                        disabled
+                                    />
+                                    <label className='selected_option'>{selectedOptions[index]}</label>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    <Result />
+                </div>
             )}
         </div>
     );

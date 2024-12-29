@@ -5,7 +5,7 @@
 .chat-window {
   width: 100%;
   font-size: 1.4rem;
-  padding: 1rem 2rem;
+  padding: 6rem 2rem 2rem;
 }
 .chat-window .input_field .bot_wrap {
   display: flex;
